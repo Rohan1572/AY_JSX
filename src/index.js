@@ -1,19 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+const date = new Date(2009,1,1,13);
+const currentTime = date.getHours();
+let greeting;
+
+const customStyle = {
+  color: ""
+};
+
+if (currentTime < 12) {
+  greeting = "Good Morning";
+  customStyle.color = "red";
+} else if (currentTime < 18) {
+  greeting = "Good Afternoon";
+  customStyle.color = "green";
+} else {
+  greeting = "Good Night";
+  customStyle.color = "blue";
+}
+
 ReactDOM.render(
-  <div>
-    <h1 className="heading">My Favourite Cuisines</h1>
-    {/* <ul>
-      <li>Pasta</li>
-      <li>Noodles</li>
-      <li>Rajma Chawal</li>
-    </ul> */}
-    <div>
-      <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2021/05/arrabiata-pasta-1.jpg"></img>
-      <img src="https://www.loveandoliveoil.com/wp-content/uploads/2015/03/soy-sauce-noodlesH2.jpg"></img>
-      <img src="https://s9c2c8i7.rocketcdn.me/wp-content/uploads/2017/08/rajma-chawal-1.jpg"></img>
-    </div>
-  </div>,
+  <h1 style={customStyle}>{greeting}</h1>,
   document.getElementById("root")
 );
